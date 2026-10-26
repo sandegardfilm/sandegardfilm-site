@@ -1,0 +1,39 @@
+/* Shared, restrained scroll reveals for the Sandegard Film site. */
+.reveal-js .reveal-item {
+  opacity: 0;
+  translate: 0 24px;
+  transition:
+    opacity 780ms cubic-bezier(.22, 1, .36, 1),
+    translate 780ms cubic-bezier(.22, 1, .36, 1),
+    scale 900ms cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, translate, scale;
+}
+
+.reveal-js .reveal-item.reveal-media {
+  scale: .985;
+}
+
+.reveal-js .reveal-item.reveal-visible {
+  opacity: 1;
+  translate: none;
+  scale: 1;
+  will-change: auto;
+}
+
+@media (max-width: 700px) {
+  .reveal-js .reveal-item {
+    translate: 0 16px;
+    transition-duration: 650ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-js .reveal-item,
+  .reveal-js .reveal-item.reveal-media {
+    opacity: 1;
+    translate: none;
+    scale: 1;
+    transition: none;
+  }
+}
